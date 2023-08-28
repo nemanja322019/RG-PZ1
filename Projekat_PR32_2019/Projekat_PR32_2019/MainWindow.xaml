@@ -1,0 +1,54 @@
+﻿<Window x:Class="Projekat_PR32_2019.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Projekat_PR32_2019"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="579" Width="958" KeyDown="Window_KeyDown">
+    <Grid>
+        <Menu DockPanel.Dock ="Top"  >
+            <MenuItem Header="Projekat Interakcija">
+                <MenuItem Header="Hide substations"      Width="200"      Click="HideSubstations_Click"   ></MenuItem>
+                <MenuItem Header="Show substations"      Width="200"      Click="ShowSubstations_Click"   ></MenuItem>
+                <MenuItem Header="Hide nodes"      Width="200"      Click="HideNodes_Click"   ></MenuItem>
+                <MenuItem Header="Show nodes"      Width="200"      Click="ShowNodes_Click"   ></MenuItem>
+                <MenuItem Header="Hide switches"      Width="200"      Click="HideSwitches_Click"   ></MenuItem>
+                <MenuItem Header="Show switches"      Width="200"      Click="ShowSwitches_Click"   ></MenuItem>
+                <MenuItem Header="Hide lines"      Width="200"      Click="HideLines_Click"   ></MenuItem>
+                <MenuItem Header="Show lines"      Width="200"      Click="ShowLines_Click"   ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Projekat Interakcija">
+                <MenuItem Header="Hide inactive"      Width="200"      Click="HideInactive_Click"   ></MenuItem>
+                <MenuItem Header="Show inactive"      Width="200"      Click="ShowInactive_Click"   ></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <Button x:Name="Load_button" Content="Load Map" HorizontalAlignment="Left" Margin="606,34,0,0" VerticalAlignment="Top" Click="Load_Button_Click" RenderTransformOrigin="-0.35,0.904"/>
+        <ComboBox x:Name="cmbPutanje" HorizontalAlignment="Left" Margin="688,12,0,0" VerticalAlignment="Top" Width="118" Height="22" SelectionChanged="cmbPutanje_SelectionChanged">
+        </ComboBox>
+        <ComboBox x:Name="cmbFajlovi" HorizontalAlignment="Left" Margin="821,11,0,0" VerticalAlignment="Top" Width="118" Height="22">
+        </ComboBox>
+        <Slider x:Name="slider" Minimum=".1" Maximum="10" Value="1" Margin="0,66,0,-87"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Visible" Margin="0,95,0,0">
+            <Canvas Background="#FED8B0"  MouseRightButtonDown="mouseRightButtonDown_Canvas" MouseLeftButtonDown="mouseLeftButtonDown_Canvas" x:Name="canvas" Width="1000"  Height="866">
+                <Canvas.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="{Binding ElementName=slider, Path=Value}"
+                                    ScaleY="{Binding ElementName=slider, Path=Value}"/>
+                        <ScaleTransform ScaleX="-1"/>
+                    </TransformGroup>
+                </Canvas.LayoutTransform>
+            </Canvas>
+        </ScrollViewer>
+        <RadioButton x:Name="Ellipse_RadioButton" Content="Draw Ellipse" HorizontalAlignment="Left" Margin="27,19,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Polygon_RadioButton" Content="Draw Polygon" HorizontalAlignment="Left" Margin="126,19,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Text_RadioButton" Content="Add text" HorizontalAlignment="Left" Margin="235,19,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Edit_RadioButton" Content="Edit" HorizontalAlignment="Left" Margin="323,19,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button_Undo" Content="Undo" HorizontalAlignment="Left" Margin="400,5,0,0" VerticalAlignment="Top" Width="85" Height="22" Click="button_Undo_Click"/>
+        <Button x:Name="button_Redo" Content="Redo" HorizontalAlignment="Left" Margin="400,27,0,0" VerticalAlignment="Top" Width="85" Height="22" Click="button_Redo_Click"/>
+        <Button x:Name="button_Clear" Content="Clear" HorizontalAlignment="Left" Margin="490,5,0,0" VerticalAlignment="Top" Width="85" Height="22" Click="button_Clear_Click"/>
+        <Button x:Name="button_Browse" Content="Browse" HorizontalAlignment="Left" Margin="606,8,0,0" VerticalAlignment="Top" Click="Browse_Button_Click" RenderTransformOrigin="-0.35,0.904" Width="57"/>
+        <Button x:Name="button_SaveCanvasAsImage" Content="Save Image" HorizontalAlignment="Left" Margin="510,34,0,0" VerticalAlignment="Top" Click="button_SaveCanvasAsImage_Click" RenderTransformOrigin="-0.35,0.904"/>
+    </Grid>
+</Window>
